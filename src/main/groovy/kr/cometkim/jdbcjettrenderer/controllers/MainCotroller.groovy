@@ -60,9 +60,10 @@ class MainCotroller {
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"${template.originalFilename}\"")
                 .body(new ByteArrayResource(fileOut.toByteArray()))
         } catch (Exception e) {
+            e.printStackTrace()
             ResponseEntity
                 .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .contentType(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.TEXT_PLAIN)
                 .body(e.getStackTrace())
         } finally {
             conn?.close()
