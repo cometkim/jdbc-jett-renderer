@@ -72,7 +72,7 @@ class MainCotroller {
     }
 
     private List<Object> getTableInfoList(DatabaseMetaData metadata) {
-        def tableInfoList = [[:]]
+        def tableInfoList = []
 
         def tableMetadata = metadata.getTables(null, null, null, ['TABLE'] as String[])
         while(tableMetadata.next()) {
@@ -91,7 +91,7 @@ class MainCotroller {
     }
 
     private List<Object> getColumnInfoList(DatabaseMetaData metadata, String tableName) {
-        def columnInfoList = [[:]]
+        def columnInfoList = []
 
         def columnMetadata = metadata.getColumns(null, null, tableName, null)
         while (columnMetadata.next()) {
