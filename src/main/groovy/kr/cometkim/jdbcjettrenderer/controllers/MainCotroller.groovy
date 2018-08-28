@@ -19,10 +19,10 @@ import java.sql.DriverManager
 @Controller
 class MainCotroller {
     @GetMapping('/')
-    public String index() { 'index' }
+    String index() { 'index' }
 
     @PostMapping('/render')
-    public ResponseEntity<ByteArrayResource> renderTemplate(
+    ResponseEntity<ByteArrayResource> renderTemplate(
         @RequestParam('host') String host,
         @RequestParam('port') Integer port,
         @RequestParam('database') String dbname,
@@ -39,7 +39,7 @@ class MainCotroller {
                 password,
             )
             def jdbc = new JDBCExecutor(conn)
-            def metadata = conn.getMetaData()
+            def metadata = conn.metaData
             def tables = getTableInfoList(metadata)
 
             def ctx = [
@@ -47,7 +47,7 @@ class MainCotroller {
                 tables: tables,
             ]
 
-            def fileIn = template.getInputStream()
+            def fileIn = template.inputStream
             fileOut = new ByteArrayOutputStream()
 
             new ExcelTransformer()
@@ -64,7 +64,7 @@ class MainCotroller {
             ResponseEntity
                 .status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .contentType(MediaType.TEXT_PLAIN)
-                .body(e.getStackTrace())
+                .body(e.stackTrace)
         } finally {
             conn?.close()
             fileOut?.close()
