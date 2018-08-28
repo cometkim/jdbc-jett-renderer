@@ -74,7 +74,7 @@ class MainCotroller {
     private List<Object> getTableInfoList(DatabaseMetaData metadata) {
         def tableInfoList = [[:]]
 
-        def tableMetadata = metadata.getTables(null, null, null, ['TABLE'])
+        def tableMetadata = metadata.getTables(null, null, null, ['TABLE'] as String[])
         while(tableMetadata.next()) {
             def tableName = tableMetadata.getString('TABLE_NAME')
             def columns = getColumnInfoList(metadata, tableName)
