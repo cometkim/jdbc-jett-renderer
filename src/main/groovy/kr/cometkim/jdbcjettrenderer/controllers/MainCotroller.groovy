@@ -77,12 +77,10 @@ class MainCotroller {
         def tableMetadata = metadata.getTables(null, null, null, ['TABLE'] as String[])
         while(tableMetadata.next()) {
             def tableName = tableMetadata.getString('TABLE_NAME')
-            def columns = getColumnInfoList(metadata, tableName)
-
-            // TODO: Get more information from ResultSet and Push it
             def tableInfo = [
                 name: tableName,
-                columns: columns,
+                comment: tableMetadata.getString('REMARKS'),
+                columns: getColumnInfoList(metadata, tableName),
             ]
             tableInfoList += tableInfo
         }
@@ -95,11 +93,12 @@ class MainCotroller {
 
         def columnMetadata = metadata.getColumns(null, null, tableName, null)
         while (columnMetadata.next()) {
-            def columnName = columnMetadata.getString('COLUMN_NAME')
-
-            // TODO: Get information from ResultSet and Push it
             def columnInfo = [
-                name: columnName,
+                name: columnMetadata.getString('COLUMN_NAME'),
+                type: columnMetadata.getString('TYPE_NAME'),
+                comment: columnMetadata.getString('REMARKS'),
+                isNullable: columnMetadata.getString('IS_NULLABLE') == 'YES',
+                isAutoIncrement: columnMetadata.getString('IS_AUTOINCREMENT') == 'YES',
             ]
             columnInfoList += columnInfo
         }

@@ -37,6 +37,7 @@ DB 지원
 | 이름 | 타입 | 설명 |
 | ---- | ---- | ---- |
 | name | `String` | 테이블 이름 |
+| comment | `String` | 테이블 커멘트 |
 | columns | `List<*Object>` | 컬럼 목록, *Object 구조는 ColumnInfo로 정의 |
 
 ### ColumnInfo
@@ -46,3 +47,7 @@ DB 지원
 | 이름 | 타입 | 설명 |
 | ---- | ---- | ---- |
 | name | `String` | 컬럼 이름 |
+| type | `String` | 컬럼 타입 이름 |
+| comment | `String` | 컬럼 커멘트 |
+| isNullable | `Boolean` | 컬럼 NULLABLE 여부 |
+| isAutoIncrement | `Boolean` | 컬럼 AUTO_INCREMENT 여부 |
