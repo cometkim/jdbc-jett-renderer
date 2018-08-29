@@ -34,7 +34,7 @@ class MainCotroller {
         def fileOut = null
         try {
             conn = DriverManager.getConnection(
-                "jdbc:mysql//${host}:${port}/${dbname}",
+                "jdbc:mysql://${host}:${port}/${dbname}",
                 username,
                 password,
             )
