@@ -5,35 +5,43 @@
     <title>JDBC JETT Renderer</title>
 </head>
 <body>
-    <h1>JDBC JEXL Renderer</h1>
-    <form action="/render" method="post" enctype="multipart/form-data">
-        <div class="field">
-            <label class="field-label" for="host">Host: </label>
-            <input type="text" id="host" name="host" value="localhost" required>
-        </div>
-        <div class="field">
-            <label class="field-label" for="port">Port: </label>
-            <input type="number" id="port" name="port" value="3306" required>
-        </div>
-        <div class="field">
-            <label class="field-label" for="database">DB Name: </label>
-            <input type="text" id="database" name="database" required>
-        </div>
-        <div class="field">
-            <label class="field-label" for="username">Username: </label>
-            <input type="text" id="username" name="username" required>
-        </div>
-        <div class="field">
-            <label class="field-label" for="password">Password: </label>
-            <input type="text" id="password" name="password" required>
-        </div>
-        <div class="field">
-            <label class="field-label" for="template">Template Spreedsheet: </label>
-            <input type="file" id="template" name="template" accept=".xls, .xlsx" required>
-        </div>
-        <div>
-            <button>Render this</button>
-        </div>
-    </form>
+    <div class="container">
+        <h1 class="title">JDBC JEXL Renderer</h1>
+
+        <form action="/render" method="post" enctype="multipart/form-data">
+            <div class="db-fields">
+                <div class="field">
+                    <label class="field-label" for="host">Host: </label>
+                    <input type="text" id="host" name="host" value="localhost" required>
+                </div>
+                <div class="field">
+                    <label class="field-label" for="port">Port: </label>
+                    <input type="number" id="port" name="port" value="3306" required>
+                </div>
+                <div class="field">
+                    <label class="field-label" for="database">DB Name: </label>
+                    <input type="text" id="database" name="database" required>
+                </div>
+                <div class="field">
+                    <label class="field-label" for="username">Username: </label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="field">
+                    <label class="field-label" for="password">Password: </label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+            </div>
+
+            <div class="template-fields">
+                <div class="field">
+                    <label class="field-label" for="template">Template Spreedsheet: </label>
+                    <input type="file" id="template" name="template" accept=".xls, .xlsx" required>
+                </div>
+                <div class="field">
+                    <button type="submit">Render Template</button>
+                </div>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
