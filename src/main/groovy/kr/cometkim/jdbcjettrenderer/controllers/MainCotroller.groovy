@@ -64,7 +64,7 @@ class MainCotroller {
             ResponseEntity
                 .status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .contentType(MediaType.TEXT_PLAIN)
-                .body(e.stackTrace)
+                .body(e.message)
         } finally {
             conn?.close()
             fileOut?.close()
