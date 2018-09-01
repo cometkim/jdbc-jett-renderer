@@ -30,6 +30,12 @@
                     <label class="field-label" for="password">Password: </label>
                     <input type="password" id="password" name="password" required>
                 </div>
+                <div clas="field">
+                    <button type="button" onclick="testDatabaseConnection()">
+                        Test DB Connection
+                    </button>
+                    <div id="test-result"></div>
+                </div>
             </div>
 
             <div class="template-fields">
@@ -43,5 +49,20 @@
             </div>
         </form>
     </div>
+
+    <script>
+        function testDatabaseConnection() {
+            var $result = document.getElementById('test-result');
+
+            fetch('/test', {
+                method: 'POST',
+                body: new FormData(document.querySelector('form'))
+            }).then(function (res) {
+                return res.text();
+            }).then(function (message) {
+                $result.innerText = message;
+            })
+        }
+    </script>
 </body>
 </html>

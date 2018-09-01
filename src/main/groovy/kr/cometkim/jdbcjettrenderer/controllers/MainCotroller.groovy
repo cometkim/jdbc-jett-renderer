@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.bind.annotation.ResponseBody
 import org.springframework.web.multipart.MultipartFile
 
 import java.sql.DatabaseMetaData
@@ -20,6 +21,29 @@ import java.sql.DriverManager
 class MainCotroller {
     @GetMapping('/')
     String index() { 'index' }
+
+    @PostMapping('/test')
+    @ResponseBody
+    String testConnection(
+        @RequestParam('host') String host,
+        @RequestParam('port') Integer port,
+        @RequestParam('database') String dbname,
+        @RequestParam('username') String username,
+        @RequestParam('password') String password
+    ) {
+        try {
+            def conn = DriverManager.getConnection(
+                "jdbc:mysql://${host}:${port}/${dbname}",
+                username,
+                password,
+            )
+            conn.close()
+        } catch (Exception e) {
+            ResponseEntity.status(HttpStatus.BAD_REQUEST)
+            return "Connection failed: ${e.message}"
+        }
+        return "Connected successfully"
+    }
 
     @PostMapping('/render')
     ResponseEntity<ByteArrayResource> renderTemplate(
