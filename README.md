@@ -1,6 +1,10 @@
 # jdbc-jett-renderer
 
-[JETT](http://jett.sourceforge.net)는 [JEXL 표현식](http://commons.apache.org/proper/commons-jexl)을 사용하는 엑셀 스프레드시트 템플릿 엔진입니다.
+소개글: [DB 분석서 쓰기 싫어요 - JETT로 분석서 뽑아내기](https://blog.cometkim.kr/posts/introduction-to-jdbc-jett-renderer/)
+
+## 설명
+
+[JETT](http://jett.sourceforge.net)는 [JEXL 표현식](http://commons.apache.org/proper/commons-jexl)을 지원하는 엑셀 스프레드시트 템플릿 엔진입니다.
 
 DB 분석서를 한땀한땀 써내려가기엔 인생이 너무 짧으므로 Spring Boot, JDBC, JETT를 활용하여 자동화합니다.
 
@@ -16,6 +20,7 @@ DB 지원
 - [ ] DB 테이블 별 시트 생성
 - [ ] CLI 모드
 - [ ] Docker 컨테이너
+- [ ] 커스텀 태그 라이브러리
 
 ## 타입 정보
 
